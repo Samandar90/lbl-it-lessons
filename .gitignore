@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env*
+*.log
+*.key
+*.pem
+*.tar.gz
+.local/
