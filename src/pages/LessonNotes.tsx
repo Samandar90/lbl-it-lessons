@@ -7,7 +7,12 @@ import {
   MapPin,
   Presentation,
 } from "lucide-react";
-import { CodeBlock, Playground, focusLabels } from "../components/Code";
+import {
+  CodeBlock,
+  Playground,
+  Preview,
+  focusLabels,
+} from "../components/Code";
 import { ContactPanel, Header } from "../components/Header";
 import { stepLabel, ui } from "../copy";
 import { useLanguage } from "../i18n";
@@ -68,7 +73,7 @@ function Practice({
   );
 }
 function BlockView({ lesson, block }: { lesson: Lesson; block: Block }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   switch (block.kind) {
     case "text":
       return block.paragraphs.map((paragraph, i) => (
@@ -100,6 +105,18 @@ function BlockView({ lesson, block }: { lesson: Lesson; block: Block }) {
     }
     case "practice":
       return <Practice lesson={lesson} block={block} />;
+    case "demo":
+      return (
+        <>
+          <p className="block-intro">{t(block.text)}</p>
+          <div className="demo-preview">
+            <Preview
+              code={lesson.project.code(lesson.project.steps, lang)}
+              title={t(block.title)}
+            />
+          </div>
+        </>
+      );
     case "quiz":
       return (
         <div className="quiz">
@@ -120,6 +137,7 @@ function BlockView({ lesson, block }: { lesson: Lesson; block: Block }) {
 export function LessonNotes({ lesson }: { lesson: Lesson }) {
   const { t } = useLanguage();
   const practiceRef = useRef<HTMLElement>(null);
+  const hasPractice = lesson.blocks.some((block) => block.kind === "practice");
   const title = t(lesson.title);
   useEffect(() => {
     document.title = `${title} · LBL IT`;
@@ -156,14 +174,16 @@ export function LessonNotes({ lesson }: { lesson: Lesson }) {
               </dl>
             ) : null}
             <div className="hero-actions">
-              <button
-                className="button button-primary"
-                onClick={() =>
-                  practiceRef.current?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                <Code2 size={18} /> {t(ui.toPractice)}
-              </button>
+              {hasPractice ? (
+                <button
+                  className="button button-primary"
+                  onClick={() =>
+                    practiceRef.current?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
+                  <Code2 size={18} /> {t(ui.toPractice)}
+                </button>
+              ) : null}
               <a className="button button-ghost" href={slidesHref(lesson.id)}>
                 <Presentation size={18} /> {t(ui.openSlides)}
               </a>

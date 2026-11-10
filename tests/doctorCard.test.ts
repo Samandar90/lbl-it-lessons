@@ -30,7 +30,7 @@ test("кнопка «Пульс» запускает и останавливае
   assert.match(ru.css, /@keyframes beat/);
   assert.deepEqual(clickPulse(ru.js, 1), {
     beating: true,
-    message: { textContent: "Мой первый код работает!" },
+    message: { textContent: "Сердце бьётся — это работает код!" },
   });
   assert.deepEqual(clickPulse(ru.js, 2), {
     beating: false,
@@ -38,6 +38,6 @@ test("кнопка «Пульс» запускает и останавливае
   });
   assert.equal(
     clickPulse(doctorCardCode(1, "uz").js, 1).message.textContent,
-    "Birinchi kodim ishlayapti!",
+    "Yurak urmoqda — bu kod ishlayapti!",
   );
 });

@@ -115,6 +115,25 @@ function SlideView({ lesson, slide }: { lesson: Lesson; slide: Slide }) {
         </div>
       );
     }
+    case "demo": {
+      const code = lesson.project.code(lesson.project.steps, lang);
+      return (
+        <div className="slide slide-code slide-demo">
+          <div className="slide-code-text">
+            {head}
+            <ul className="slide-points">
+              {slide.points.map((point, i) => (
+                <li key={i}>{t(point)}</li>
+              ))}
+            </ul>
+            {notesLink}
+          </div>
+          <div className="slide-preview">
+            <Preview code={code} title={t(slide.title)} />
+          </div>
+        </div>
+      );
+    }
     case "end":
       return (
         <div className="slide slide-end">

@@ -79,12 +79,8 @@ const homework: Text[] = [
     uz: "O‘qish yoki amaliyotdagi hal qilishni istagan 3 ta muammoni yozib qo‘y.",
   },
   {
-    ru: "Открой конспект и доделай свою карточку: имя, мечта, цвет.",
-    uz: "Konspektni ochib, kartochkangni tugatib qo‘y: ism, orzu, rang.",
-  },
-  {
-    ru: "Установи VS Code: он понадобится на следующем уроке.",
-    uz: "VS Code’ni o‘rnat: u keyingi darsda kerak bo‘ladi.",
+    ru: "Подумай, какое приложение ты хотел бы создать для учёбы, пациентов или клиники.",
+    uz: "O‘qish, bemorlar yoki klinika uchun qanday ilova yaratishni xohlashingni o‘ylab ko‘r.",
   },
 ];
 
@@ -207,25 +203,26 @@ export const firstLesson: Lesson = {
       cards: ideas,
     },
     {
-      kind: "code",
-      showNotesLink: true,
-      step: 1,
-      focus: "html",
-      eyebrow: { ru: "ЭТО РАБОТАЕТ ПРЯМО СЕЙЧАС", uz: "BU HOZIROQ ISHLAYAPTI" },
-      title: { ru: "Твоя первая страница", uz: "Sening birinchi sahifang" },
+      kind: "demo",
+      eyebrow: { ru: "ЭТО СДЕЛАНО КОДОМ", uz: "BU KOD BILAN YARATILGAN" },
+      title: { ru: "Маленькая живая страница", uz: "Kichik jonli sahifa" },
       points: [
         {
-          ru: "Шесть строк HTML — и у тебя своя страница",
-          uz: "Olti qator HTML — va sening sahifang tayyor",
+          ru: "Эту страницу написали программой — как и любой сайт",
+          uz: "Bu sahifa dastur bilan yozilgan — har qanday sayt kabi",
         },
         {
           ru: "Нажми «Пульс» справа: сердце забьётся",
           uz: "O‘ngdagi «Puls»ni bos: yurak ura boshlaydi",
         },
+        {
+          ru: "На курсе ты шаг за шагом научишься делать такие страницы сам",
+          uz: "Kursda bunday sahifalarni qadamma-qadam o‘zing yaratishni o‘rganasan",
+        },
       ],
       notes: {
-        ru: "Попросить открыть ссылку на конспект и поменять в карточке имя и цвет. 5–7 минут: у каждого появится первая строчка своего кода.",
-        uz: "Konspekt havolasini ochib, kartochkadagi ism va rangni o‘zgartirishni so‘rang. 5–7 daqiqa: har kimda o‘z kodining birinchi qatori paydo bo‘ladi.",
+        ru: "Только показ: нажать «Пульс» самому, можно дать нажать желающим. Код сегодня не показывать.",
+        uz: "Faqat ko‘rsatish: «Puls»ni o‘zingiz bosing, xohlovchilarga ham bosishga bering. Bugun kodni ko‘rsatmang.",
       },
     },
     {
@@ -309,8 +306,8 @@ export const firstLesson: Lesson = {
           uz: "Bu kirish darsi: nega bo‘lajak shifokor yoki biotibbiyot muhandisi texnologiyalar yaratishni o‘rganishi kerak va noldan o‘z ilovangacha bo‘lgan yo‘l qanday tuzilgan.",
         },
         {
-          ru: "Кода сегодня совсем немного: ты поменяешь свою первую страницу прямо в браузере, без установки программ.",
-          uz: "Bugun kod juda oz: birinchi sahifangni to‘g‘ridan-to‘g‘ri brauzerda, dastur o‘rnatmasdan o‘zgartirasan.",
+          ru: "Сегодня ничего не нужно устанавливать и писать: просто слушай, задавай вопросы и думай, какое приложение хотелось бы создать.",
+          uz: "Bugun hech narsa o‘rnatish va yozish shart emas: shunchaki tingla, savol ber va qanday ilova yaratishni xohlashingni o‘yla.",
         },
       ],
     },
@@ -331,25 +328,12 @@ export const firstLesson: Lesson = {
       cards: ideas,
     },
     {
-      kind: "practice",
-      title: { ru: "Твоя первая страница", uz: "Sening birinchi sahifang" },
-      intro: {
-        ru: "Это карточка будущего врача. Она уже работает — осталось сделать её своей.",
-        uz: "Bu bo‘lajak shifokor kartochkasi. U allaqachon ishlayapti — uni o‘zingniki qilish qoldi.",
+      kind: "demo",
+      title: { ru: "Нажми на кнопку", uz: "Tugmani bos" },
+      text: {
+        ru: "Эта маленькая страница сделана кодом. Нажми «Пульс» — сердце забьётся. На курсе ты научишься делать такие страницы сам.",
+        uz: "Bu kichik sahifa kod bilan yaratilgan. «Puls»ni bos — yurak ura boshlaydi. Kursda bunday sahifalarni o‘zing yaratishni o‘rganasan.",
       },
-      steps: [
-        {
-          focus: "html",
-          title: {
-            ru: "Сделай карточку своей",
-            uz: "Kartochkani o‘zingniki qil",
-          },
-          text: {
-            ru: "Нажми «Открыть в редакторе». Во вкладке HTML замени «Твоё имя» на своё имя и напиши, что хочешь создать. Во вкладке CSS поменяй цвет #0b6e62 на любой другой, например #7c3aed. Потом нажми «Пульс».",
-            uz: "«Muharrirda ochish»ni bos. HTML yorlig‘ida «Sening isming»ni o‘z isming bilan almashtir va nima yaratmoqchi ekaningni yoz. CSS yorlig‘ida #0b6e62 rangini istalgan boshqa rangga, masalan #7c3aed ga almashtir. Keyin «Puls»ni bos.",
-          },
-        },
-      ],
     },
     {
       kind: "list",

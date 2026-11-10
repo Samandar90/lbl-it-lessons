@@ -23,6 +23,8 @@ export type Slide = SlideBase &
     | { kind: "points"; points: Text[]; numbered?: boolean }
     | { kind: "cards"; cards: Card[] }
     | { kind: "code"; step: number; focus: Focus; points: Text[] }
+    // A finished page to try without seeing any code.
+    | { kind: "demo"; points: Text[] }
     | { kind: "end"; points: Text[] }
   );
 export interface PracticeStep {
@@ -35,6 +37,7 @@ export type Block =
   | { kind: "cards"; title: Text; cards: Card[] }
   | { kind: "list"; title: Text; items: Text[]; numbered?: boolean }
   | { kind: "practice"; title: Text; intro: Text; steps: PracticeStep[] }
+  | { kind: "demo"; title: Text; text: Text }
   | { kind: "quiz"; title: Text; items: { question: Text; answer: Text }[] };
 export interface Lesson {
   id: string;

@@ -841,6 +841,19 @@ button:disabled {
   min-height: 440px;
   border-color: var(--line-dark);
 }
+.slide-demo {
+  align-items: center;
+}
+.slide-demo .slide-preview .preview {
+  min-height: 480px;
+}
+.demo-preview {
+  display: flex;
+  margin-top: 18px;
+}
+.demo-preview .preview {
+  min-height: 380px;
+}
 .slide-end h2 {
   margin: 0 0 clamp(18px, 2.4vw, 36px);
   font-size: clamp(44px, 6vw, 96px);

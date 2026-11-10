@@ -6,17 +6,17 @@ const words = {
     name: "Твоё имя",
     dream: "Хочу создать: тренажёр к экзаменам",
     button: "♥ Пульс",
-    message: "Мой первый код работает!",
+    message: "Сердце бьётся — это работает код!",
   },
   uz: {
     badge: "Bo‘lajak shifokor",
     name: "Sening isming",
     dream: "Yaratmoqchiman: imtihon trenajyori",
     button: "♥ Puls",
-    message: "Birinchi kodim ishlayapti!",
+    message: "Yurak urmoqda — bu kod ishlayapti!",
   },
 };
-// One finished page: on the first lesson students only change it, not build it.
+// A finished page shown on the first lesson: students only press the button.
 export const doctorCardSteps = 1;
 export function doctorCardCode(_step: number, lang: Lang): CodeSet {
   const w = words[lang];
