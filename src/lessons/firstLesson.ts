@@ -1,8 +1,9 @@
 import type { Text } from "../i18n";
-import { doctorCardCode, doctorCardSteps } from "./doctorCard.ts";
+import { doctorCardCode } from "./doctorCard.ts";
 import { coursePath } from "./shared.ts";
-import type { Card, Lesson } from "./types";
+import type { Card, Example, Lesson } from "./types";
 
+const doctorCard: Example = { build: doctorCardCode, show: [] };
 const technologyAround: Card[] = [
   {
     label: { ru: "АППАРАТЫ", uz: "APPARATLAR" },
@@ -96,7 +97,6 @@ export const firstLesson: Lesson = {
     ru: "Зачем будущему врачу и биомедицинскому инженеру программирование, что уже можно создать для медицины и как пройти путь от нуля до своего приложения за год.",
     uz: "Bo‘lajak shifokor va biotibbiyot muhandisiga dasturlash nima uchun kerak, tibbiyot uchun nimalar yaratish mumkin va bir yilda noldan o‘z ilovangacha qanday yo‘l bosiladi.",
   },
-  project: { steps: doctorCardSteps, code: doctorCardCode },
   slides: [
     {
       kind: "title",
@@ -203,7 +203,8 @@ export const firstLesson: Lesson = {
       cards: ideas,
     },
     {
-      kind: "demo",
+      kind: "example",
+      example: doctorCard,
       eyebrow: { ru: "ЭТО СДЕЛАНО КОДОМ", uz: "BU KOD BILAN YARATILGAN" },
       title: { ru: "Маленькая живая страница", uz: "Kichik jonli sahifa" },
       points: [
@@ -328,7 +329,8 @@ export const firstLesson: Lesson = {
       cards: ideas,
     },
     {
-      kind: "demo",
+      kind: "example",
+      example: doctorCard,
       title: { ru: "Нажми на кнопку", uz: "Tugmani bos" },
       text: {
         ru: "Эта маленькая страница сделана кодом. Нажми «Пульс» — сердце забьётся. На курсе ты научишься делать такие страницы сам.",

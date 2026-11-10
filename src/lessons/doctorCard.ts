@@ -17,8 +17,7 @@ const words = {
   },
 };
 // A finished page shown on the first lesson: students only press the button.
-export const doctorCardSteps = 1;
-export function doctorCardCode(_step: number, lang: Lang): CodeSet {
+export function doctorCardCode(lang: Lang): CodeSet {
   const w = words[lang];
   return {
     html: `<main class="card">

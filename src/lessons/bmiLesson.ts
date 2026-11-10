@@ -1,7 +1,9 @@
 import { bmiCode, bmiSteps } from "./bmi.ts";
 import type { Text } from "../i18n";
 import { coursePath } from "./shared.ts";
-import type { Card, Lesson } from "./types";
+import type { Card, CodeProject, Lesson } from "./types";
+
+const bmiProject: CodeProject = { steps: bmiSteps, code: bmiCode };
 
 const languagesOfPage: Card[] = [
   {
@@ -106,7 +108,6 @@ export const bmiLesson: Lesson = {
     ru: "За один урок разберёмся, как устроен сайт, и соберём калькулятор индекса массы тела на HTML, CSS и JavaScript.",
     uz: "Bir darsda sayt qanday tuzilganini bilib olamiz va HTML, CSS hamda JavaScript’da tana vazni indeksi kalkulyatorini yaratamiz.",
   },
-  project: { steps: bmiSteps, code: bmiCode },
   slides: [
     {
       kind: "title",
@@ -213,6 +214,7 @@ export const bmiLesson: Lesson = {
     },
     {
       kind: "code",
+      project: bmiProject,
       step: 1,
       focus: "html",
       eyebrow: { ru: "ШАГ 1 · HTML", uz: "1-QADAM · HTML" },
@@ -230,6 +232,7 @@ export const bmiLesson: Lesson = {
     },
     {
       kind: "code",
+      project: bmiProject,
       step: 2,
       focus: "css",
       eyebrow: { ru: "ШАГ 2 · CSS", uz: "2-QADAM · CSS" },
@@ -247,6 +250,7 @@ export const bmiLesson: Lesson = {
     },
     {
       kind: "code",
+      project: bmiProject,
       step: 3,
       focus: "js",
       eyebrow: { ru: "ШАГ 3 · JAVASCRIPT", uz: "3-QADAM · JAVASCRIPT" },
@@ -272,6 +276,7 @@ export const bmiLesson: Lesson = {
     },
     {
       kind: "code",
+      project: bmiProject,
       step: 4,
       focus: "js",
       eyebrow: { ru: "ШАГ 4 · КАТЕГОРИИ ВОЗ", uz: "4-QADAM · JSST TOIFALARI" },
@@ -337,6 +342,7 @@ export const bmiLesson: Lesson = {
     },
     {
       kind: "practice",
+      project: bmiProject,
       title: { ru: "Практика по шагам", uz: "Qadamma-qadam amaliyot" },
       intro: {
         ru: "Собираем приложение за четыре шага. Нажми «Открыть в редакторе», меняй код и сразу смотри результат.",

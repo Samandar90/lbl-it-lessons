@@ -1,5 +1,34 @@
 import type { Lesson } from "./types";
 import { bmiLesson } from "./bmiLesson.ts";
 import { firstLesson } from "./firstLesson.ts";
-// Add new lessons here in the order they are taught.
-export const lessons: Lesson[] = [firstLesson, bmiLesson];
+import {
+  browserLesson,
+  filesLesson,
+  installLesson,
+  keyboardLesson,
+  vscodeLesson,
+} from "./month1Computer.ts";
+import {
+  cardLesson,
+  cssLesson,
+  htmlLesson,
+  mediaLesson,
+  publishLesson,
+  structureLesson,
+} from "./month1Web.ts";
+// Every prepared lesson; the order of the course lives in src/plan/plan.ts.
+export const lessons: Lesson[] = [
+  firstLesson,
+  keyboardLesson,
+  filesLesson,
+  browserLesson,
+  installLesson,
+  vscodeLesson,
+  htmlLesson,
+  structureLesson,
+  mediaLesson,
+  cssLesson,
+  cardLesson,
+  publishLesson,
+  bmiLesson,
+];

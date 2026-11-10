@@ -92,7 +92,7 @@ function SlideView({ lesson, slide }: { lesson: Lesson; slide: Slide }) {
         </div>
       );
     case "code": {
-      const code = lesson.project.code(slide.step, lang);
+      const code = slide.project.code(slide.step, lang);
       return (
         <div className="slide slide-code">
           <div className="slide-code-text">
@@ -115,18 +115,34 @@ function SlideView({ lesson, slide }: { lesson: Lesson; slide: Slide }) {
         </div>
       );
     }
-    case "demo": {
-      const code = lesson.project.code(lesson.project.steps, lang);
+    case "example": {
+      const code = slide.example.build(lang);
+      const { show } = slide.example;
       return (
-        <div className="slide slide-code slide-demo">
+        <div
+          className={
+            show.length ? "slide slide-code" : "slide slide-code slide-demo"
+          }
+        >
           <div className="slide-code-text">
             {head}
-            <ul className="slide-points">
+            <ul
+              className={
+                show.length ? "slide-points slide-points-small" : "slide-points"
+              }
+            >
               {slide.points.map((point, i) => (
                 <li key={i}>{t(point)}</li>
               ))}
             </ul>
             {notesLink}
+            {show.map((focus) => (
+              <CodeBlock
+                key={focus}
+                label={focusLabels[focus]}
+                code={code[focus]}
+              />
+            ))}
           </div>
           <div className="slide-preview">
             <Preview code={code} title={t(slide.title)} />

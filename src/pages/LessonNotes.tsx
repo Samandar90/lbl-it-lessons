@@ -18,20 +18,15 @@ import { stepLabel, ui } from "../copy";
 import { useLanguage } from "../i18n";
 import type { Block, Lesson, PracticeStep } from "../lessons/types";
 import { slidesHref } from "../route";
-function Practice({
-  lesson,
-  block,
-}: {
-  lesson: Lesson;
-  block: Extract<Block, { kind: "practice" }>;
-}) {
+function Practice({ block }: { block: Extract<Block, { kind: "practice" }> }) {
   const { t, lang } = useLanguage();
   const [step, setStep] = useState(1);
-  const [code, setCode] = useState(() => lesson.project.code(1, lang));
+  const { project } = block;
+  const [code, setCode] = useState(() => project.code(1, lang));
   const editorRef = useRef<HTMLDivElement>(null);
   const open = (next: number) => {
     setStep(next);
-    setCode(lesson.project.code(next, lang));
+    setCode(project.code(next, lang));
     editorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (
@@ -47,7 +42,7 @@ function Practice({
               <p>{t(item.text)}</p>
               <CodeBlock
                 label={focusLabels[item.focus]}
-                code={lesson.project.code(number, lang)[item.focus]}
+                code={project.code(number, lang)[item.focus]}
               />
               <button
                 className="button button-ghost"
@@ -66,13 +61,13 @@ function Practice({
         <Playground
           code={code}
           onChange={setCode}
-          onReset={() => setCode(lesson.project.code(step, lang))}
+          onReset={() => setCode(project.code(step, lang))}
         />
       </div>
     </>
   );
 }
-function BlockView({ lesson, block }: { lesson: Lesson; block: Block }) {
+function BlockView({ block }: { block: Block }) {
   const { t, lang } = useLanguage();
   switch (block.kind) {
     case "text":
@@ -104,19 +99,27 @@ function BlockView({ lesson, block }: { lesson: Lesson; block: Block }) {
       );
     }
     case "practice":
-      return <Practice lesson={lesson} block={block} />;
-    case "demo":
+      return <Practice block={block} />;
+    case "example": {
+      const code = block.example.build(lang);
       return (
         <>
           <p className="block-intro">{t(block.text)}</p>
+          <div className="example-code">
+            {block.example.show.map((focus) => (
+              <CodeBlock
+                key={focus}
+                label={focusLabels[focus]}
+                code={code[focus]}
+              />
+            ))}
+          </div>
           <div className="demo-preview">
-            <Preview
-              code={lesson.project.code(lesson.project.steps, lang)}
-              title={t(block.title)}
-            />
+            <Preview code={code} title={t(block.title)} />
           </div>
         </>
       );
+    }
     case "quiz":
       return (
         <div className="quiz">
@@ -201,7 +204,7 @@ export function LessonNotes({ lesson }: { lesson: Lesson }) {
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {t(block.title)}
               </h2>
-              <BlockView lesson={lesson} block={block} />
+              <BlockView block={block} />
             </section>
           ))}
         </div>

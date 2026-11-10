@@ -16,8 +16,8 @@ export const ui = {
   homeEyebrow: { ru: "LBL IT DEPARTMENT", uz: "LBL IT DEPARTMENT" },
   homeTitle: { ru: "Уроки курса", uz: "Kurs darslari" },
   homeLead: {
-    ru: "Слайды и конспекты занятий Fullstack + AI для будущих врачей и биомедицинских инженеров. Код пишем прямо в браузере.",
-    uz: "Bo‘lajak shifokorlar va biotibbiyot muhandislari uchun Fullstack + AI mashg‘ulotlarining slaydlari va konspektlari. Kodni to‘g‘ridan-to‘g‘ri brauzerda yozamiz.",
+    ru: "Программа на год: 144 урока, по три в неделю. Начинаем с нуля — с компьютера и клавиатуры — и к концу года создаём своё приложение.",
+    uz: "Bir yillik dastur: haftasiga uchtadan, 144 ta dars. Noldan — kompyuter va klaviaturadan boshlaymiz va yil oxirida o‘z ilovamizni yaratamiz.",
   },
   notFound: {
     ru: "Такой страницы нет. Вот список уроков.",
@@ -57,7 +57,26 @@ export const ui = {
   backToNotes: { ru: "К конспекту", uz: "Konspektga" },
   slideOf: { ru: "из", uz: "/" },
   answer: { ru: "Ответ", uz: "Javob" },
+  methodTitle: { ru: "Как мы учимся", uz: "Qanday o‘qiymiz" },
+  planTitle: { ru: "Программа уроков", uz: "Darslar dasturi" },
+  planLead: {
+    ru: "Уроки первого месяца готовы: открывай конспект или слайды. Остальные появятся по мере курса.",
+    uz: "Birinchi oy darslari tayyor: konspekt yoki slaydlarni och. Qolganlari kurs davomida paydo bo‘ladi.",
+  },
+  soon: { ru: "скоро", uz: "tez orada" },
 } satisfies Record<string, Text>;
+export const monthLabel = (n: number): Text => ({
+  ru: `Месяц ${n}`,
+  uz: `${n}-oy`,
+});
+export const weekLabel = (n: number): Text => ({
+  ru: `Неделя ${n}`,
+  uz: `${n}-hafta`,
+});
+export const lessonLabel = (n: number): Text => ({
+  ru: `Урок ${n}`,
+  uz: `${n}-dars`,
+});
 export const stepLabel = (step: number): Text => ({
   ru: `Шаг ${step}`,
   uz: `${step}-qadam`,

@@ -26,7 +26,7 @@ function clickPulse(js: string, times: number) {
 }
 
 test("кнопка «Пульс» запускает и останавливает сердцебиение", () => {
-  const ru = doctorCardCode(1, "ru");
+  const ru = doctorCardCode("ru");
   assert.match(ru.css, /@keyframes beat/);
   assert.deepEqual(clickPulse(ru.js, 1), {
     beating: true,
@@ -37,7 +37,7 @@ test("кнопка «Пульс» запускает и останавливае
     message: { textContent: "" },
   });
   assert.equal(
-    clickPulse(doctorCardCode(1, "uz").js, 1).message.textContent,
+    clickPulse(doctorCardCode("uz").js, 1).message.textContent,
     "Yurak urmoqda — bu kod ishlayapti!",
   );
 });
