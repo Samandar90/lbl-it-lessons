@@ -43,6 +43,11 @@ function SlideView({ lesson, slide }: { lesson: Lesson; slide: Slide }) {
       <h2>{t(slide.title)}</h2>
     </>
   );
+  const notesLink = slide.showNotesLink ? (
+    <p className="slide-link">
+      <BookOpen size={22} /> {t(ui.notesLink)}: <b>{notesUrl(lesson)}</b>
+    </p>
+  ) : null;
   switch (slide.kind) {
     case "title":
       return (
@@ -83,12 +88,7 @@ function SlideView({ lesson, slide }: { lesson: Lesson; slide: Slide }) {
               </article>
             ))}
           </div>
-          {slide.showNotesLink ? (
-            <p className="slide-link">
-              <BookOpen size={22} /> {t(ui.notesLink)}:{" "}
-              <b>{notesUrl(lesson)}</b>
-            </p>
-          ) : null}
+          {notesLink}
         </div>
       );
     case "code": {
@@ -102,6 +102,7 @@ function SlideView({ lesson, slide }: { lesson: Lesson; slide: Slide }) {
                 <li key={i}>{t(point)}</li>
               ))}
             </ul>
+            {notesLink}
             <CodeBlock
               label={focusLabels[slide.focus]}
               code={code[slide.focus]}

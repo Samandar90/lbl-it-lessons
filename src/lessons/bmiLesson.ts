@@ -1,5 +1,6 @@
 import { bmiCode, bmiSteps } from "./bmi.ts";
 import type { Text } from "../i18n";
+import { coursePath } from "./shared.ts";
 import type { Card, Lesson } from "./types";
 
 const languagesOfPage: Card[] = [
@@ -94,9 +95,9 @@ const homework: Text[] = [
   },
 ];
 
-export const trialLesson: Lesson = {
-  id: "trial",
-  badge: { ru: "Пробный урок", uz: "Sinov darsi" },
+export const bmiLesson: Lesson = {
+  id: "bmi",
+  badge: { ru: "Практикум", uz: "Amaliy mashg‘ulot" },
   title: {
     ru: "Твоё первое медицинское приложение",
     uz: "Sening birinchi tibbiy ilovang",
@@ -105,16 +106,13 @@ export const trialLesson: Lesson = {
     ru: "За один урок разберёмся, как устроен сайт, и соберём калькулятор индекса массы тела на HTML, CSS и JavaScript.",
     uz: "Bir darsda sayt qanday tuzilganini bilib olamiz va HTML, CSS hamda JavaScript’da tana vazni indeksi kalkulyatorini yaratamiz.",
   },
-  date: { ru: "9 ноября, понедельник", uz: "9-noyabr, dushanba" },
-  time: "16:00",
-  place: { ru: "Кабинет 718, 7 этаж", uz: "718-xona, 7-qavat" },
   project: { steps: bmiSteps, code: bmiCode },
   slides: [
     {
       kind: "title",
       eyebrow: {
-        ru: "ПРОБНЫЙ УРОК · 9 НОЯБРЯ · 16:00",
-        uz: "SINOV DARSI · 9-NOYABR · 16:00",
+        ru: "ПРАКТИКУМ · HTML, CSS, JAVASCRIPT",
+        uz: "AMALIY MASHG‘ULOT · HTML, CSS, JAVASCRIPT",
       },
       title: {
         ru: "Твоё первое медицинское приложение",
@@ -294,24 +292,7 @@ export const trialLesson: Lesson = {
       numbered: true,
       eyebrow: { ru: "ЗА 12 МЕСЯЦЕВ", uz: "12 OYDA" },
       title: { ru: "Что дальше", uz: "Keyin nima" },
-      points: [
-        {
-          ru: "Месяц 3 — сайт клиники и тренажёр медицинских терминов",
-          uz: "3-oy — klinika sayti va tibbiy atamalar trenajyori",
-        },
-        {
-          ru: "Месяц 6 — React-приложение: каталог препаратов или кабинет",
-          uz: "6-oy — React ilova: dori-darmonlar katalogi yoki kabinet",
-        },
-        {
-          ru: "Месяц 9 — сервис с базой данных и входом: например, запись к врачу",
-          uz: "9-oy — ma’lumotlar bazasi va kirishga ega servis: masalan, shifokorga yozilish",
-        },
-        {
-          ru: "Месяц 12 — твой продукт с AI, опубликованный по ссылке",
-          uz: "12-oy — havola orqali ochiladigan AI’li o‘z mahsuloting",
-        },
-      ],
+      points: coursePath,
     },
     {
       kind: "end",

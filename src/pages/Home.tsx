@@ -32,16 +32,19 @@ export function Home({ notFound }: { notFound: boolean }) {
             {lessons.map((lesson, index) => (
               <article className="lesson-card" key={lesson.id}>
                 <span className="lesson-number">
-                  {String(index).padStart(2, "0")}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
                   <span className="badge">{t(lesson.badge)}</span>
                   <h2>{t(lesson.title)}</h2>
                   <p>{t(lesson.summary)}</p>
-                  <p className="lesson-meta">
-                    <MapPin size={16} />
-                    {t(lesson.date)} · {lesson.time} · {t(lesson.place)}
-                  </p>
+                  {lesson.schedule ? (
+                    <p className="lesson-meta">
+                      <MapPin size={16} />
+                      {t(lesson.schedule.date)} · {lesson.schedule.time} ·{" "}
+                      {t(lesson.schedule.place)}
+                    </p>
+                  ) : null}
                 </div>
                 <div className="lesson-actions">
                   <a

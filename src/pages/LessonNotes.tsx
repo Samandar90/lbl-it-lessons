@@ -133,26 +133,28 @@ export function LessonNotes({ lesson }: { lesson: Lesson }) {
             <span className="badge">{t(lesson.badge)}</span>
             <h1>{title}</h1>
             <p>{t(lesson.summary)}</p>
-            <dl className="lesson-facts">
-              <div>
-                <dt>
-                  <CalendarDays size={16} /> {t(ui.date)}
-                </dt>
-                <dd>{t(lesson.date)}</dd>
-              </div>
-              <div>
-                <dt>
-                  <Clock size={16} /> {t(ui.time)}
-                </dt>
-                <dd>{lesson.time}</dd>
-              </div>
-              <div>
-                <dt>
-                  <MapPin size={16} /> {t(ui.place)}
-                </dt>
-                <dd>{t(lesson.place)}</dd>
-              </div>
-            </dl>
+            {lesson.schedule ? (
+              <dl className="lesson-facts">
+                <div>
+                  <dt>
+                    <CalendarDays size={16} /> {t(ui.date)}
+                  </dt>
+                  <dd>{t(lesson.schedule.date)}</dd>
+                </div>
+                <div>
+                  <dt>
+                    <Clock size={16} /> {t(ui.time)}
+                  </dt>
+                  <dd>{lesson.schedule.time}</dd>
+                </div>
+                <div>
+                  <dt>
+                    <MapPin size={16} /> {t(ui.place)}
+                  </dt>
+                  <dd>{t(lesson.schedule.place)}</dd>
+                </div>
+              </dl>
+            ) : null}
             <div className="hero-actions">
               <button
                 className="button button-primary"

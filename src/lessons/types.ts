@@ -14,12 +14,14 @@ interface SlideBase {
   eyebrow: Text;
   title: Text;
   notes?: Text;
+  // Shows the address of the lesson notes so students can open the editor.
+  showNotesLink?: boolean;
 }
 export type Slide = SlideBase &
   (
     | { kind: "title"; subtitle: Text }
     | { kind: "points"; points: Text[]; numbered?: boolean }
-    | { kind: "cards"; cards: Card[]; showNotesLink?: boolean }
+    | { kind: "cards"; cards: Card[] }
     | { kind: "code"; step: number; focus: Focus; points: Text[] }
     | { kind: "end"; points: Text[] }
   );
@@ -39,9 +41,8 @@ export interface Lesson {
   badge: Text;
   title: Text;
   summary: Text;
-  date: Text;
-  time: string;
-  place: Text;
+  // Omitted until the date of the lesson is fixed.
+  schedule?: { date: Text; time: string; place: Text };
   project: CodeProject;
   slides: Slide[];
   blocks: Block[];
